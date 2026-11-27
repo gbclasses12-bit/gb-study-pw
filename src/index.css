@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 213 31% 7%;
+  --card: 0 0% 100%;
+  --card-foreground: 213 31% 7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 213 31% 7%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 213 31% 7%;
+  --radius: 0.5rem;
+  --fill: #332e56;
+  --gradient-1: #edebfe;
+  --gradient-2: #b2a9ff;
+  --gradient-3: #a49bf2;
+}
+
+.dark {
+  --background: 213 31% 7%;
+  --foreground: 210 40% 98%;
+  --card: 213 31% 7%;
+  --card-foreground: 210 40% 98%;
+  --popover: 213 31% 7%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 210 13% 27%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 210 13% 27%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 210 13% 27%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 210 13% 27%;
+  --input: 210 13% 27%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.divshadow {
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+}
+
+.dark .divshadow {
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: hsl(var(--muted));
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.08), transparent);
+  animation: skeleton-shimmer 1.35s ease-in-out infinite;
+}
+
+@keyframes nt-route-shimmer {
+  0% {
+    background-position: 200% 0, 0 0;
+  }
+  to {
+    background-position: -200% 0, 0 0;
+  }
+}
+
+@keyframes rotate-fwd {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate-back {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-rotate-fwd {
+  animation: rotate-fwd 0.3s ease-in-out;
+}
+
+.animate-rotate-back {
+  animation: rotate-back 0.3s ease-in-out;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dark aside nav img {
+  filter: brightness(0) invert(1);
+}
+
+.dark aside nav a:not([data-active="true"]) svg,
+.dark aside nav a:not([data-active="true"]) svg circle,
+.dark aside nav a:not([data-active="true"]) svg line,
+.dark aside nav a:not([data-active="true"]) svg path,
+.dark aside nav a:not([data-active="true"]) svg polyline,
+.dark aside nav a:not([data-active="true"]) svg rect {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer::after {
+    animation: none;
+  }
+}
